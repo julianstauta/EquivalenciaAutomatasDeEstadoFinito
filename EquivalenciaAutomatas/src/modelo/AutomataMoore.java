@@ -19,8 +19,8 @@ public class AutomataMoore {
 	public AutomataMoore(String tabla) {
 		String[] lineas=tabla.split("\n");
 		StringTokenizer skt=new StringTokenizer(lineas[0].trim());
-		simbolos=new ArrayList();
-		ArrayList<String> simbols=new ArrayList();
+		simbolos=new ArrayList<Simbolo>();
+		
 		for (int i = 0; i < lineas.length; i++) {
 			String actualSimbol=skt.nextToken();
 			Simbolo nuevo=new Simbolo(actualSimbol);
