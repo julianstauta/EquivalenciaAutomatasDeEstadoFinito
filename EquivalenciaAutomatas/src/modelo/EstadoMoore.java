@@ -18,11 +18,13 @@ public class EstadoMoore {
 	private Respuesta respuesta;
 	
 	
+	private int maquina;
 	
 	
 	
-	public EstadoMoore(String id) {
+	public EstadoMoore(String id, int numero) {
 		this.id = id;
+		maquina=numero;
 		transiciones=new HashMap();
 	}
 	public String getId() {

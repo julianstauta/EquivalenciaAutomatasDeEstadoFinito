@@ -16,7 +16,7 @@ public class AutomataMoore {
 	
 	private HashMap<String, Respuesta> respuestas;
 	
-	public AutomataMoore(String tabla) {
+	public AutomataMoore(String tabla, int numero) {
 		String[] lineas=tabla.split("\n");
 		StringTokenizer skt=new StringTokenizer(lineas[0].trim());
 		simbolos=new ArrayList<Simbolo>();
@@ -34,7 +34,7 @@ public class AutomataMoore {
 			String respuesta=actualLine[actualLine.length-1];
 			EstadoMoore actual=estados.get(estado);
 			if(actual==null) {
-				actual=new EstadoMoore(estado);
+				actual=new EstadoMoore(estado, numero);
 				estados.put(estado, actual);
 			}
 			Respuesta respuestaActual=respuestas.get(respuesta);
@@ -51,7 +51,7 @@ public class AutomataMoore {
 				String estadoTransicion=actualLine[j];
 				EstadoMoore estadoMooreTransicion=estados.get(estadoTransicion);
 				if(estadoMooreTransicion==null) {
-					estadoMooreTransicion=new EstadoMoore(estadoTransicion);
+					estadoMooreTransicion=new EstadoMoore(estadoTransicion, numero);
 					estados.put(estadoTransicion, estadoMooreTransicion);
 				}
 				actual.getTransiciones().put(simbolos.get(j-1), estadoMooreTransicion);
@@ -60,6 +60,40 @@ public class AutomataMoore {
 		}
 		
 	}
+
+	public EstadoMoore getEstadoInicial() {
+		return estadoInicial;
+	}
+
+	public void setEstadoInicial(EstadoMoore estadoInicial) {
+		this.estadoInicial = estadoInicial;
+	}
+
+	public HashMap<String, EstadoMoore> getEstados() {
+		return estados;
+	}
+
+	public void setEstados(HashMap<String, EstadoMoore> estados) {
+		this.estados = estados;
+	}
+
+	public ArrayList<Simbolo> getSimbolos() {
+		return simbolos;
+	}
+
+	public void setSimbolos(ArrayList<Simbolo> simbolos) {
+		this.simbolos = simbolos;
+	}
+
+	public HashMap<String, Respuesta> getRespuestas() {
+		return respuestas;
+	}
+
+	public void setRespuestas(HashMap<String, Respuesta> respuestas) {
+		this.respuestas = respuestas;
+	}
+	
+	
 	
 	
 }
