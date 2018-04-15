@@ -10,10 +10,10 @@ public class AutomataMealy {
 	
 	private HashMap<String, EstadoMealy> estados;
 	
-	private HashMap<String, Respuesta> respuestas;
 	
 	
-	public AutomataMealy(String table, int numero, ArrayList<Simbolo> simbolos) {
+	
+	public AutomataMealy(String table, int numero, ArrayList<Simbolo> simbolos,HashMap<String, Respuesta> respuestas) {
 		String[] lineas=table.split("\n");
 		StringTokenizer skt=new StringTokenizer(lineas[0].trim());
 		if(simbolos==null||simbolos.size()!=skt.countTokens()) {
@@ -27,7 +27,9 @@ public class AutomataMealy {
 		}
 		
 		estados=new HashMap();
-		respuestas=new HashMap();
+		if(respuestas==null) {
+			respuestas=new HashMap();			
+		}
 		for (int i = 1; i < lineas.length; i++) {
 			String [] actualLine=lineas[i].split(" ");
 			String estado=actualLine[0];
@@ -59,4 +61,31 @@ public class AutomataMealy {
 		}
 
 	}
+
+
+	public EstadoMealy getEstadoInicial() {
+		return estadoInicial;
+	}
+
+
+	public void setEstadoInicial(EstadoMealy estadoInicial) {
+		this.estadoInicial = estadoInicial;
+	}
+
+
+	public HashMap<String, EstadoMealy> getEstados() {
+		return estados;
+	}
+
+
+	public void setEstados(HashMap<String, EstadoMealy> estados) {
+		this.estados = estados;
+	}
+
+
+	
+	
+	
+	
+	
 }
