@@ -2,19 +2,14 @@ package modelo;
 
 public class TransicionMealy {
 
-	
-	/**
-	 * Estado inicial de la transicion
-	 */
-	private EstadoMoore estadoInicial;
 	/**
 	 * Estado final de la transicion
 	 */
-	private EstadoMoore estadoFinal;
+	private EstadoMealy estadoFinal;
 	/**
 	 * Simbolo que genera la transicion
 	 */
-	private String respuesta;
+	private Respuesta respuesta;
 	
 	
 	/**
@@ -23,30 +18,29 @@ public class TransicionMealy {
 	 * @param estadoFinal
 	 * @param simbolo
 	 */
-	public TransicionMealy(EstadoMoore estadoInicial, EstadoMoore estadoFinal, String respuesta) {
-		this.estadoInicial = estadoInicial;
+	public TransicionMealy(EstadoMealy estadoFinal, Respuesta respuesta) {
+		
 		this.estadoFinal = estadoFinal;
 		this.respuesta=respuesta;
 	}
-	
-	public EstadoMoore getEstadoInicial() {
-		return estadoInicial;
-	}
-	public void setEstadoInicial(EstadoMoore estadoInicial) {
-		this.estadoInicial = estadoInicial;
-	}
-	public EstadoMoore getEstadoFinal() {
+
+
+	public EstadoMealy getEstadoFinal() {
 		return estadoFinal;
 	}
-	public void setEstadoFinal(EstadoMoore estadoFinal) {
+
+
+	public void setEstadoFinal(EstadoMealy estadoFinal) {
 		this.estadoFinal = estadoFinal;
 	}
 
-	public String getRespuesta() {
+
+	public Respuesta getRespuesta() {
 		return respuesta;
 	}
 
-	public void setRespuesta(String respuesta) {
+
+	public void setRespuesta(Respuesta respuesta) {
 		this.respuesta = respuesta;
 	}
 	

@@ -46,10 +46,10 @@ public class Programa {
 			}else {
 				switch (automata) {
 				case 1:
-					automataMealy1=new AutomataMealy(table);
+					automataMealy1=new AutomataMealy(table,1,simbolos);
 					break;
 				case 2:
-					automataMealy2=new AutomataMealy(table);
+					automataMealy2=new AutomataMealy(table,2,simbolos);
 					break;
 
 				default:
