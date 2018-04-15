@@ -11,21 +11,21 @@ public class AutomataMoore {
 	
 	private HashMap<String, EstadoMoore> estados;
 	
-	private ArrayList<Simbolo> simbolos;
-	
-	
 	private HashMap<String, Respuesta> respuestas;
 	
-	public AutomataMoore(String tabla, int numero) {
+	public AutomataMoore(String tabla, int numero, ArrayList<Simbolo> simbolos) {
 		String[] lineas=tabla.split("\n");
 		StringTokenizer skt=new StringTokenizer(lineas[0].trim());
-		simbolos=new ArrayList<Simbolo>();
-		
-		for (int i = 0; i < lineas.length; i++) {
-			String actualSimbol=skt.nextToken();
-			Simbolo nuevo=new Simbolo(actualSimbol);
-			simbolos.add(nuevo);
+		if(simbolos==null) {
+			simbolos=new ArrayList<>();
+			for (int i = 0; i < lineas.length; i++) {
+				String actualSimbol=skt.nextToken();
+				Simbolo nuevo=new Simbolo(actualSimbol);
+				simbolos.add(nuevo);
+			}
+			
 		}
+		
 		estados=new HashMap();
 		respuestas=new HashMap();
 		for (int i = 1; i < lineas.length; i++) {
@@ -75,14 +75,6 @@ public class AutomataMoore {
 
 	public void setEstados(HashMap<String, EstadoMoore> estados) {
 		this.estados = estados;
-	}
-
-	public ArrayList<Simbolo> getSimbolos() {
-		return simbolos;
-	}
-
-	public void setSimbolos(ArrayList<Simbolo> simbolos) {
-		this.simbolos = simbolos;
 	}
 
 	public HashMap<String, Respuesta> getRespuestas() {

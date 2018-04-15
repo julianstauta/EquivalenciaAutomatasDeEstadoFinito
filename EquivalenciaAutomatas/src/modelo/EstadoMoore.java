@@ -45,6 +45,12 @@ public class EstadoMoore {
 	public void setRespuesta(Respuesta respuesta) {
 		this.respuesta = respuesta;
 	}
+	public int getMaquina() {
+		return maquina;
+	}
+	public void setMaquina(int maquina) {
+		this.maquina = maquina;
+	}
 	
 	
 	
