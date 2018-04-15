@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<BorderPane prefHeight="227.0" prefWidth="474.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <AnchorPane prefHeight="227.0" prefWidth="474.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox layoutX="22.0" layoutY="66.0" spacing="18.0" AnchorPane.leftAnchor="22.0" AnchorPane.rightAnchor="22.0">
+               <children>
+                  <Label prefHeight="21.0" prefWidth="283.0" text="Seleccione un tipo de automata" />
+                  <ComboBox fx:id="comboBox" prefHeight="31.0" prefWidth="132.0" />
+               </children>
+            </HBox>
+            <VBox layoutX="22.0" layoutY="104.0" spacing="7.0" AnchorPane.leftAnchor="22.0" AnchorPane.rightAnchor="22.0">
+               <children>
+                  <Label prefHeight="21.0" prefWidth="283.0" text="Escriba el conjunto de estimulos:" />
+                  <TextField fx:id="txtEstim" promptText="Cada estimulo separado con una coma (Eg: a,b,c)" />
+               </children>
+            </VBox>
+            <Button fx:id="butIniciar" layoutX="207.0" layoutY="161.0" mnemonicParsing="false" text="Iniciar" AnchorPane.bottomAnchor="22.0" />
+            <Label layoutX="22.0" layoutY="30.0" text="Bienvenido a el programa de equivalencia de automatas" AnchorPane.leftAnchor="22.0" AnchorPane.rightAnchor="22.0" AnchorPane.topAnchor="30.0" />
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>
