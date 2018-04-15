@@ -129,7 +129,7 @@ public class controller extends Application {
 			for (int i = 0; i < lineas.length; i++) {
 				String[] linea = lineas[i].split(" ");
 				for (int j = 1; j < linea.length; j++) {
-					if (!estados.containsKey(linea[j])) {
+					if (j != linea.length-1 &&!estados.containsKey(linea[j])) {
 						throw new Exception("Existen trasiciones hacia estados inexistentes");
 					}
 					if (j == linea.length-1 && (!linea[j].equals("0") && !linea[j].equals("1"))) {
