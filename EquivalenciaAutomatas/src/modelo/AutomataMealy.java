@@ -53,6 +53,9 @@ public class AutomataMealy {
 					respuesta=new Respuesta(estadoTransicion[1]);
 					respuestas.put(estadoTransicion[1], respuesta);
 				}
+				if (actual.getTransiciones() == null) {
+					actual.setTransiciones(new HashMap<>());
+				}
 				actual.getTransiciones().put(simbolos.get(j-1), new TransicionMealy(estadoMooreTransicion, respuesta));
 			}
 			

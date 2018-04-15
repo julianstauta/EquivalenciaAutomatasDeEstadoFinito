@@ -102,6 +102,7 @@ public class controller extends Application {
 			String resultado = programa.equivalenciaAutomatas();
 			tablas.mostrarResultado(resultado);
 		} catch (Exception e) {
+			e.printStackTrace();
 			Alert a = new Alert(AlertType.ERROR, e.getMessage());
 			a.show();
 		}
