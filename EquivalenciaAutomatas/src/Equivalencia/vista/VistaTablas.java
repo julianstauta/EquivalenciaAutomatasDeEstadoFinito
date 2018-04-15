@@ -18,51 +18,134 @@ import javafx.scene.control.TableColumn.CellEditEvent;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.util.Callback;
 
+/**
+ * Clase que sirve para controlar la ventana de los automatas
+ * @author JulianSantiago and LuisMiguel
+ *
+ */
 public class VistaTablas {
 
+	/**
+	 * Constantes de tipos de automata<br>
+	 * MEALY: Tipo mealy<br>
+	 * MOORE: Tipo moore
+	 */
 	public static final String MEALY = "Mealy", MOORE = "Moore";
 	
+	/**
+	 * Tipo de automata que se esta mostrando
+	 */
 	private String tipo;
+	
+	/**
+	 * Estimulos que entran a los estados
+	 */
 	private String[] estimulos;
+	
+	/**
+	 * Controlador de la clase
+	 */
 	private controller cont;
 	
+	/**
+	 * Tabla automata 1
+	 */
 	@FXML
 	private TableView<String[]> table1;
+	
+	/**
+	 * Tabla automata 2
+	 */
 	@FXML
 	private TableView<String[]> table2;
 	@FXML
+	
+	/**
+	 * Boton agregar a tabla 1
+	 */
 	private Button butAgr1;
 	@FXML
+	
+	/**
+	 * Boton agregar a tabla 2
+	 */
 	private Button butAgr2;
+	
+	/**
+	 * Boton borrar tabla 1
+	 */
 	@FXML
 	private Button butDel1;
+	
+	/**
+	 * Boton borra tabla 2
+	 */
 	@FXML
 	private Button butDel2;
+	
+	/**
+	 * Boton calcular equivalencia
+	 */
 	@FXML
 	private Button butEq;
+	
+	/**
+	 * Menu item nueva equivalencia
+	 */
 	@FXML
 	private MenuItem nuevaEquivalencia; 
+	
+	/**
+	 * Menu item salir
+	 */
 	@FXML
 	private MenuItem salir;
+	
+	/**
+	 * Menu item info
+	 */
 	@FXML
 	private MenuItem info;
+	
+	/**
+	 * Label para mostrar el resultado
+	 */
 	@FXML
 	private Label resultado;
+	
+	/**
+	 * Label numero de estados automata 1
+	 */
 	@FXML
 	private Label num1;
+	
+	/**
+	 * Label numero de estados automata 2
+	 */
 	@FXML
 	private Label num2;
 	
+	/**
+	 * Constructor generico de la clase
+	 */
 	public VistaTablas() {
 	}
 	
-	
+	/**
+	 * Constructor de la clase
+	 * @param tipo String. El tipo de automata que se va a mostar MEALY o MOORE
+	 * @param estimulos String[]. Arreglo de estimulos que entran a los estados
+	 * @param c controller. Controlador de la clase
+	 */
 	public VistaTablas(String tipo, String[] estimulos, controller c) {
 		this.tipo = tipo;
 		this.estimulos = estimulos;
 		cont = c;		
 	}
 	
+	/**
+	 * Se encarga de inicializar algunos apectos y funciones de la parte grafica
+	 */
 	@FXML
 	public void initialize() {
 		table1.getColumns().clear();
@@ -149,6 +232,9 @@ public class VistaTablas {
 		
 	}
 	
+	/**
+	 * Agrega una fila vacia a la tabla 1
+	 */
 	public void AgregarEstado1() {
 		String[] row = new String[table1.getColumns().size()];
 		for (int i = 0; i < row.length; i++) {
@@ -158,6 +244,9 @@ public class VistaTablas {
 		num1.setText("Numero de estados: " + table1.getItems().size());
 	}
 
+	/**
+	 * Agrega una fila vacia a la tabla 1
+	 */
 	public void AgregarEstado2() {
 		String[] row = new String[table1.getColumns().size()];
 		for (int i = 0; i < row.length; i++) {
@@ -167,6 +256,10 @@ public class VistaTablas {
 		num2.setText("Numero de estados: " + table2.getItems().size());
 	}
 
+	/**
+	 * Elimina la fila seleccionada de la tabla pasada por parametro
+	 * @param table TableView. Tabla de la que se va a eliminar la fila
+	 */
 	public void eliminar(TableView table) {
 		ObservableList all, selected;
 		selected = table.getSelectionModel().getSelectedItems();
@@ -174,10 +267,17 @@ public class VistaTablas {
 		selected.forEach(all :: remove);
 	}
 	
+	/**
+	 * Mustra el resultado del calculo de equivalencia
+	 * @param resultado
+	 */
 	public void mostrarResultado( String resultado ) {
 		this.resultado.setText(resultado);
 	}
 	
+	/**
+	 * Transforma las tablas en strings y las envia al controlador para que este se encargue de calcular la equivalencia de los automatas
+	 */
 	public void calcularEquivalencia() {
 		String automata1 = "";
 		boolean incompleto = false;

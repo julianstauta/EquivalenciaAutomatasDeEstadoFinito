@@ -2,7 +2,6 @@ package Equivalencia;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 
 import Equivalencia.vista.*;
@@ -16,14 +15,41 @@ import javafx.stage.Stage;
 import modelo.Programa;
 import modelo.Simbolo;
 
+/**
+ * Clase controladora del programa
+ * @author JulianSantiago and LuisMiguel
+ *
+ */
 public class controller extends Application {
 
+	/**
+	 * Ventana primaria del programa
+	 */
 	private Stage primaryStage;
+	
+	/**
+	 * Layout principal del programa
+	 */
 	private BorderPane mainlayout;
+	
+	/**
+	 * Clase pricipal que ciontiene la parte logica del programa
+	 */
 	private Programa programa;
+	
+	/**
+	 * Controlador de la ventana para visualizar los automatas
+	 */
 	private VistaTablas tablas;
+	
+	/**
+	 * Valor booleano que representa si el tipo de automata a tratar es moore
+	 */
 	private boolean moore;
 	
+	/**
+	 * Ejecuta las funcionalidades graficas de la aplicacion
+	 */
 	@Override
 	public void start(Stage primaryStage) {
 		this.primaryStage = primaryStage;
@@ -31,6 +57,9 @@ public class controller extends Application {
 		showSeleccionAutomata();
 	}
 	
+	/**
+	 * Muestra la ventana de seleccion de automata
+	 */
 	public void showSeleccionAutomata(){
 		programa = new Programa();
 		try {
@@ -46,6 +75,11 @@ public class controller extends Application {
 		}
 	}
 	
+	/**
+	 * Muestra la ventana de visualizacion de automatas
+	 * @param tipo String. Tipo de automatas Mealy o Moore
+	 * @param estimulos. String[]. Estimulos que entran a los estados de los automatas.
+	 */
 	public void showTablas(String tipo, String[] estimulos) {
 		
 		try {
@@ -93,6 +127,23 @@ public class controller extends Application {
 		}
 	}
 	
+	/**
+	 * Determina la equivalencia entre dos automatas en forma de string. los automatas tienen el siguiente formato:<br>
+	 * <b>Si es Mealy</b>:<br>
+	 * Estado1(espacio)EstadoTransicion1(espacio)EstadoTransicion2(espacio)...(espacio)EstadoTransicionN(Salto de Linea)<br>
+	 * Estado2(espacio)EstadoTransicion1(espacio)EstadoTransicion2(espacio)...(espacio)EstadoTransicionN(Salto de Linea)<br>
+	 * ...(Salto de linea)<br>
+	 * EstadoK(espacio)EstadoTransicion1(espacio)EstadoTransicion2(espacio)...(espacio)EstadoTransicionN(Salto de Linea)<br>
+	 * con N y K >= 1<br>
+	 * <b>Si es Moore</b>:<br>
+	 * Estado1(espacio)EstadoTransicion1(espacio)EstadoTransicion2(espacio)...(espacio)EstadoTransicionN(espacio)Salida(Salto de Linea)<br>
+	 * Estado2(espacio)EstadoTransicion1(espacio)EstadoTransicion2(espacio)...(espacio)EstadoTransicionN(espacio)Salida(Salto de Linea)<br>
+	 * ...(Salto de linea)<br>
+	 * EstadoK(espacio)EstadoTransicion1(espacio)EstadoTransicion2(espacio)...(espacio)EstadoTransicionN(espacio)Salida(Salto de Linea)<br>
+	 * con N y K >= 1<br>
+	 * @param automata1 String. Automata numero 1 con el formato especificado.
+	 * @param automata2 String. Automata numero 2 con el formato especificado.
+	 */
 	public void determinarEquivalencia(String automata1, String automata2) {
 		try {
 			validarAutomata(automata1);
@@ -109,6 +160,14 @@ public class controller extends Application {
 		
 	}
 	
+	/**
+	 * Valida que el automata ingresado por parametro sea un automata valido.
+	 * En un automata valido no se pueden repetir estados, no pueden haber estados con identificador vacio, los estados hacia donde van las<br>
+	 * tranciciones deben existir en el automata, las salidas solo pueden ser 1 o 0, y si el automata es de moore las tranciciones deben ser<br>
+	 * de la forma "EstadoTransicion,Salida"<br>
+	 * @param automata String. Automata ingresado por paramentro.
+	 * @throws Exception En caso que el automata no sea valido.
+	 */
 	public void validarAutomata(String automata) throws Exception{
 		if (automata.equals("")) {
 			throw new Exception("Debe definir los 2 automatas");
@@ -157,6 +216,10 @@ public class controller extends Application {
 		}
 	}
 	
+	/**
+	 * Inicia la ejecucion del programa.
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		launch(args);
 	}
