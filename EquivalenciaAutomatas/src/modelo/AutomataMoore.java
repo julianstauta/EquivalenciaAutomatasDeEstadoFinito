@@ -28,7 +28,7 @@ public class AutomataMoore {
 		
 		estados=new HashMap();
 		respuestas=new HashMap();
-		for (int i = 1; i < lineas.length; i++) {
+		for (int i = 0; i < lineas.length; i++) {
 			String [] actualLine=lineas[i].split(" ");
 			String estado=actualLine[0];
 			String respuesta=actualLine[actualLine.length-1];

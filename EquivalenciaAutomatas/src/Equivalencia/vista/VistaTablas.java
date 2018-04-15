@@ -117,7 +117,7 @@ public class VistaTablas {
             tc2.setOnEditCommit( new EventHandler<CellEditEvent>() {
 		        @Override
 		        public void handle(CellEditEvent t) {
-		        	table1.getItems().get(t.getTablePosition().getRow())[t.getTablePosition().getColumn()] = ""+t.getNewValue();
+		        	table2.getItems().get(t.getTablePosition().getRow())[t.getTablePosition().getColumn()] = ""+t.getNewValue();
 		        }
 		    });
 		}
@@ -127,6 +127,8 @@ public class VistaTablas {
 		
 		butDel1.setOnAction(e -> eliminar(table1));
 		butDel2.setOnAction(e -> eliminar(table2));
+		
+		butEq.setOnAction(e -> calcularEquivalencia());
 		
 		salir.setOnAction(e -> System.exit(0));
 		info.setOnAction(e -> {
@@ -141,7 +143,7 @@ public class VistaTablas {
 	}
 	
 	public void AgregarEstado1() {
-		String[] row = new String[estimulos.length+1];
+		String[] row = new String[table1.getColumns().size()];
 		for (int i = 0; i < row.length; i++) {
 			row[i] = "";			
 		}
@@ -149,7 +151,7 @@ public class VistaTablas {
 	}
 
 	public void AgregarEstado2() {
-		String[] row = new String[estimulos.length+1];
+		String[] row = new String[table1.getColumns().size()];
 		for (int i = 0; i < row.length; i++) {
 			row[i] = "";
 		}
@@ -165,6 +167,52 @@ public class VistaTablas {
 	
 	public void mostrarResultado( String resultado ) {
 		this.resultado.setText(resultado);
+	}
+	
+	public void calcularEquivalencia() {
+		String automata1 = "";
+		boolean incompleto = false;
+		for (int i = 0; i < table1.getItems().size(); i++) {
+			for (int j = 0; j < table1.getColumns().size(); j++) {
+				if (j == table1.getColumns().size()-1) {
+					automata1 += table1.getItems().get(i)[j] + "";
+				} else {
+					automata1 += table1.getItems().get(i)[j] + " ";
+				}
+				if (table1.getItems().get(i)[j].equals("")||table1.getItems().get(i)[j].equals(" ")) {
+					incompleto = true;
+				}
+			}
+			if (i != table1.getItems().size()-1) {
+				automata1 += "\n";
+			}
+		}
+		if (incompleto) {
+			automata1 = "";
+		}
+		String automata2 = "";
+		incompleto = false;
+		for (int i = 0; i < table2.getItems().size(); i++) {
+			for (int j = 0; j < table2.getColumns().size(); j++) {
+				if (j == table2.getColumns().size()-1) {
+					automata2 += table2.getItems().get(i)[j] + "";
+				} else {
+					automata2 += table2.getItems().get(i)[j] + " ";
+				}
+				if (table2.getItems().get(i)[j].equals("")||table2.getItems().get(i)[j].equals(" ")) {
+					incompleto = true;
+				}
+			}
+			if (i != table2.getItems().size()-1) {
+				automata2 += "\n";
+			}
+		}
+		if (incompleto) {
+			automata2 = "";
+		}
+		System.out.println(automata1);
+		System.out.println(automata2);
+		cont.determinarEquivalencia(automata1, automata2);
 	}
 	
 }

@@ -10,7 +10,7 @@
    <bottom>
       <HBox alignment="CENTER" spacing="20.0" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" text="Calcular equivalencia" />
+            <Button fx:id="butEq" mnemonicParsing="false" text="Calcular equivalencia" />
             <Label text="Resultado:" />
             <Label fx:id="resultado" text="   " />
          </children>

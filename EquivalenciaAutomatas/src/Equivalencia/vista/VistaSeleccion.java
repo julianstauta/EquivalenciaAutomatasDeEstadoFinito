@@ -40,7 +40,7 @@ public class VistaSeleccion {
 	public void mostarTablas() {
 		String tipo = comboBox.getValue()+"";
 		String[] estimulos = txtEstim.getText().split(",");
-		cont.showTablas(tipo, estimulos);		
+		cont.showTablas(tipo, estimulos);
 	}
 	
 }

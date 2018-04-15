@@ -357,6 +357,18 @@ public class Programa {
 		}
 		return equivalentes;
 	}
+
+
+
+	public ArrayList<Simbolo> getSimbolos() {
+		return simbolos;
+	}
+
+
+
+	public void setSimbolos(ArrayList<Simbolo> simbolos) {
+		this.simbolos = simbolos;
+	}
 	
 	
 	
