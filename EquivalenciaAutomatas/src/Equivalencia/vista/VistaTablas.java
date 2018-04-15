@@ -48,6 +48,10 @@ public class VistaTablas {
 	private MenuItem info;
 	@FXML
 	private Label resultado;
+	@FXML
+	private Label num1;
+	@FXML
+	private Label num2;
 	
 	public VistaTablas() {
 	}
@@ -125,9 +129,12 @@ public class VistaTablas {
 		butAgr1.setOnAction(e -> AgregarEstado1());
 		butAgr2.setOnAction(e -> AgregarEstado2());
 		
-		butDel1.setOnAction(e -> eliminar(table1));
-		butDel2.setOnAction(e -> eliminar(table2));
-		
+		butDel1.setOnAction(e -> {eliminar(table1);
+							num1.setText("Numero de estados: " + table1.getItems().size());
+							});
+		butDel2.setOnAction(e -> {eliminar(table2);
+							num2.setText("Numero de estados: " + table2.getItems().size());
+							});
 		butEq.setOnAction(e -> calcularEquivalencia());
 		
 		salir.setOnAction(e -> System.exit(0));
@@ -148,6 +155,7 @@ public class VistaTablas {
 			row[i] = "";			
 		}
 		table1.getItems().add(row);
+		num1.setText("Numero de estados: " + table1.getItems().size());
 	}
 
 	public void AgregarEstado2() {
@@ -156,6 +164,7 @@ public class VistaTablas {
 			row[i] = "";
 		}
 		table2.getItems().add(row);
+		num2.setText("Numero de estados: " + table2.getItems().size());
 	}
 
 	public void eliminar(TableView table) {
