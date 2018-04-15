@@ -22,6 +22,7 @@ public class EstadoMealy {
 	public EstadoMealy(String id, int numMaquina) {
 		this.id=id;
 		this.numMaquina=numMaquina;
+		transiciones=new HashMap<>();
 	}
 
 	public String getId() {
