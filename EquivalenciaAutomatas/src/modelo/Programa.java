@@ -304,7 +304,7 @@ public class Programa {
 				EstadoMealy uno=estados.get(i);
 				EstadoMealy dos=estados.get(j);
 				boolean salir=false;
-				for (int k = 0; k < simbolos.size(); k++) {
+				for (int k = 0; k < simbolos.size()&&!salir; k++) {
 					if(!uno.getTransiciones().get(simbolos.get(k)).getRespuesta().getId().equals(dos.getTransiciones().get(simbolos.get(k)).getRespuesta().getId())) {
 						salir=true;
 					}
