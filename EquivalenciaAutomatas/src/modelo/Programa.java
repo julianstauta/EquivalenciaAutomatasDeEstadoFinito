@@ -45,6 +45,7 @@ public class Programa {
 			}else {
 				switch (automata) {
 				case 1:
+					simbolos=null;
 					automataMealy1=new AutomataMealy(table,1,simbolos);
 					break;
 				case 2:
