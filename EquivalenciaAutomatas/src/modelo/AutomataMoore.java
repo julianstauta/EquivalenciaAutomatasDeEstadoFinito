@@ -6,13 +6,28 @@ import java.util.StringTokenizer;
 
 public class AutomataMoore {
 
+	/**
+	 * Estado inicial del automata
+	 */
 	
 	private EstadoMoore estadoInicial;
-	
+	/**
+	 * Estados del automata
+	 */
 	private HashMap<String, EstadoMoore> estados;
-	
+	/**
+	 * Respuestas a estimulos del automata
+	 */
 	private HashMap<String, Respuesta> respuestas;
 	
+	
+	/**
+	 * Constructor del automata
+	 * 
+	 * @param table tabla que describe el automata
+	 * @param numero numero que identifica que automata es
+	 * @param simbolos simbolos o estimulos del automata
+	 */
 	public AutomataMoore(String tabla, int numero, ArrayList<Simbolo> simbolos) {
 		String[] lineas=tabla.split("\n");
 		StringTokenizer skt=new StringTokenizer(lineas[0].trim());
@@ -61,26 +76,53 @@ public class AutomataMoore {
 		
 	}
 
+	/**
+	 * Metodo que retorna el estado inicial del automata
+	 * 
+	 * @return estado inicial
+	 */
 	public EstadoMoore getEstadoInicial() {
 		return estadoInicial;
 	}
 
+	
+	/**
+	 * Metodo para modificar el estado inicial del automata
+	 * @param estadoInicial
+	 */
 	public void setEstadoInicial(EstadoMoore estadoInicial) {
 		this.estadoInicial = estadoInicial;
 	}
 
+	/**
+	 * retosna los estados del automata
+	 * @return
+	 */
 	public HashMap<String, EstadoMoore> getEstados() {
 		return estados;
 	}
 
+	/**
+	 * Modifica los estados del automata
+	 * @param estados estados nuevos
+	 */
+	
 	public void setEstados(HashMap<String, EstadoMoore> estados) {
 		this.estados = estados;
 	}
 
+	/**
+	 * Retorna las respuestas del automata a los estimulos
+	 * @return
+	 */
 	public HashMap<String, Respuesta> getRespuestas() {
 		return respuestas;
 	}
-
+	/**
+	 * Modifica las respuestas del automata a los estimulos
+	 * @return
+	 */
+	
 	public void setRespuestas(HashMap<String, Respuesta> respuestas) {
 		this.respuestas = respuestas;
 	}

@@ -5,26 +5,31 @@ import java.util.HashMap;
 import java.util.StringTokenizer;
 
 public class AutomataMealy {
+	
+	/**
+	 * Estado inicial del automata
+	 */
 
 	private EstadoMealy estadoInicial;
 	
+	/**
+	 * Estados del automata
+	 */
 	private HashMap<String, EstadoMealy> estados;
-	
+	/**
+	 * Respuestas a estimulos del automata
+	 */
 	private HashMap<String, Respuesta> respuestas;
 	
-	
+	/**
+	 * Constructor del automata
+	 * 
+	 * @param table tabla que describe el automata
+	 * @param numero numero que identifica que automata es
+	 * @param simbolos simbolos o estimulos del automata
+	 */
 	public AutomataMealy(String table, int numero, ArrayList<Simbolo> simbolos) {
 		String[] lineas=table.split("\n");
-		StringTokenizer skt=new StringTokenizer(lineas[0].trim());
-		if(simbolos==null) {
-			simbolos=new ArrayList<>();
-			for (int i = 0; i < lineas.length; i++) {
-				String actualSimbol=skt.nextToken();
-				Simbolo nuevo=new Simbolo(actualSimbol);
-				simbolos.add(nuevo);
-			}
-			
-		}
 		
 		estados=new HashMap();
 		respuestas=new HashMap<>();
@@ -40,7 +45,7 @@ public class AutomataMealy {
 			if(estadoInicial==null) {
 				estadoInicial=actual;
 			}
-			for (int j = 1; j < actualLine.length-1; j++) {
+			for (int j = 1; j < actualLine.length; j++) {
 				String[] estadoTransicion=actualLine[j].split(",");
 				EstadoMealy estadoMooreTransicion=estados.get(estadoTransicion[0]);
 				if(estadoMooreTransicion==null) {
@@ -63,21 +68,38 @@ public class AutomataMealy {
 
 	}
 
+	/**
+	 * Metodo que retorna el estado inicial del automata
+	 * 
+	 * @return estado inicial
+	 */
 
 	public EstadoMealy getEstadoInicial() {
 		return estadoInicial;
 	}
 
 
+	/**
+	 * Metodo para modificar el estado inicial del automata
+	 * @param estadoInicial
+	 */
 	public void setEstadoInicial(EstadoMealy estadoInicial) {
 		this.estadoInicial = estadoInicial;
 	}
 
 
+	/**
+	 * retosna los estados del automata
+	 * @return
+	 */
 	public HashMap<String, EstadoMealy> getEstados() {
 		return estados;
 	}
 
+	/**
+	 * Modifica los estados del automata
+	 * @param estados estados nuevos
+	 */
 
 	public void setEstados(HashMap<String, EstadoMealy> estados) {
 		this.estados = estados;
