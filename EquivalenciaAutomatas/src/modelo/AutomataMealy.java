@@ -16,7 +16,7 @@ public class AutomataMealy {
 	public AutomataMealy(String table, int numero, ArrayList<Simbolo> simbolos) {
 		String[] lineas=table.split("\n");
 		StringTokenizer skt=new StringTokenizer(lineas[0].trim());
-		if(simbolos==null||simbolos.size()!=skt.countTokens()) {
+		if(simbolos==null) {
 			simbolos=new ArrayList<>();
 			for (int i = 0; i < lineas.length; i++) {
 				String actualSimbol=skt.nextToken();
