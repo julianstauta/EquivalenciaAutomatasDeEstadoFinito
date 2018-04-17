@@ -70,6 +70,7 @@ public class controller extends Application {
 			Scene scene = new Scene(mainlayout);
 			primaryStage.setScene(scene);
 			primaryStage.show();
+			primaryStage.setResizable(false);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -115,7 +116,8 @@ public class controller extends Application {
 			Scene scene = new Scene(mainlayout);
 			primaryStage.setScene(scene);
 			primaryStage.show();
-			
+			primaryStage.setResizable(false);
+			primaryStage.centerOnScreen();
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (NoSelecionoTipoException e2) {
