@@ -115,12 +115,17 @@ public class Programa {
 			
 		}
 		
+		ArrayList<String> noAlcanzables = new ArrayList<>();
 		
 		for (Iterator<EstadoMoore> iterator=moore.getEstados().values().iterator(); iterator.hasNext();) {
 			EstadoMoore estadoMoore = (EstadoMoore) iterator.next();
 			if(!estadosAlcanzables.contains(estadoMoore)) {
-				moore.getEstados().remove(estadoMoore.getId());
+				noAlcanzables.add(estadoMoore.getId());
 			}
+		}
+		
+		for (int i = 0; i < noAlcanzables.size(); i++) {
+			moore.getEstados().remove(noAlcanzables.get(i));
 		}
 		
 	}
@@ -150,12 +155,17 @@ public class Programa {
 			
 		}
 		
+		ArrayList<String> noAlcanzables = new ArrayList<>();
 		
 		for (Iterator<EstadoMealy> iterator=mealy.getEstados().values().iterator(); iterator.hasNext();) {
 			EstadoMealy estadoMealy = (EstadoMealy) iterator.next();
 			if(!estadosAlcanzables.contains(estadoMealy)) {
-				mealy.getEstados().remove(estadoMealy.getId());
+				noAlcanzables.add(estadoMealy.getId());
 			}
+		}
+		
+		for (int i = 0; i < noAlcanzables.size(); i++) {
+			mealy.getEstados().remove(noAlcanzables.get(i));
 		}
 		
 	}
