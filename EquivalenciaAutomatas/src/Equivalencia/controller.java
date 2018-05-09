@@ -33,7 +33,7 @@ public class controller extends Application {
 	private BorderPane mainlayout;
 	
 	/**
-	 * Clase pricipal que ciontiene la parte logica del programa
+	 * Clase pricipal que contiene la parte logica del programa
 	 */
 	private Programa programa;
 	
